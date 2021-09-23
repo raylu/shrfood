@@ -1,0 +1,24 @@
+body {
+	background-color: #000;
+	color: #eee;
+}
+
+a {
+	color: #08a;
+}
+
+section {
+	background-color: #111;
+	margin: 0 auto;
+	width: 900px;
+}
+
+article {
+	margin: 2em 0;
+}
+
+article > img {
+	display: block;
+	max-height: 600px;
+	max-width: 100%;
+}
