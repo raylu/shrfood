@@ -24,9 +24,9 @@ def main():
 		with open('www/food_tweets.json', 'r') as f:
 			old_food_tweets = json.load(f)
 			food_tweets.extend(old_food_tweets)
-			food_tweets.sort(key=operator.itemgetter('id'))
 	except FileNotFoundError:
 		pass
+	food_tweets.sort(key=operator.itemgetter('id'), reverse=True)
 
 	with open('www/food_tweets.json', 'w') as f:
 		json.dump(food_tweets, f, indent='\t')
