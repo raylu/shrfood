@@ -65,6 +65,8 @@ def process_tweets(bearer_token, last_tweet_id):
 			'images': images,
 		})
 
+	if new_last_tweet_id is None:
+		new_last_tweet_id = last_tweet_id
 	return food_tweets, new_last_tweet_id
 
 def iter_tweets(client, bearer_token, last_tweet_id):
