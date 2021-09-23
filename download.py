@@ -9,7 +9,7 @@ import httpx
 import toml
 
 def main():
-	with open('config.toml', 'r') as f:
+	with open('config.toml', 'r', encoding='utf-8') as f:
 		config = toml.load(f)['shrfood']
 
 	try:
@@ -21,17 +21,17 @@ def main():
 	food_tweets, last_tweet_id = process_tweets(config['twitter_bearer_token'], last_tweet_id)
 
 	try:
-		with open('www/food_tweets.json', 'r') as f:
+		with open('www/food_tweets.json', 'r', encoding='utf-8') as f:
 			old_food_tweets = json.load(f)
 			food_tweets.extend(old_food_tweets)
 	except FileNotFoundError:
 		pass
 	food_tweets.sort(key=operator.itemgetter('id'), reverse=True)
 
-	with open('www/food_tweets.json', 'w') as f:
+	with open('www/food_tweets.json', 'w', encoding='utf-8') as f:
 		json.dump(food_tweets, f, indent='\t')
 
-	with open('config.toml', 'w') as f:
+	with open('config.toml', 'w', encoding='utf-8') as f:
 		config['last_tweet_id'] = last_tweet_id
 		toml.dump({'shrfood': config}, f)
 
