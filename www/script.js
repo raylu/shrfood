@@ -26,4 +26,18 @@
 
 		main.append(article);
 	}
+
+	const modal = document.querySelector('div#modal');
+	modal.addEventListener('click', (evt) => {
+		modal.style.display = 'none';
+		modal.innerHTML = '';
+	});
+	main.addEventListener('click', (evt) => {
+		if (evt.target.loading !== 'lazy')
+			return;
+		const img = document.createElement('img');
+		img.src = evt.target.src;
+		modal.append(img);
+		modal.style.display = 'flex';
+	});
 })();
