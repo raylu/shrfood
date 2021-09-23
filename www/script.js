@@ -2,10 +2,10 @@
 
 (async () => {
 	const res = await fetch('food_tweets.json');
-	const data = await res.json();
+	const tweets = await res.json();
 
 	const main = document.querySelector('main');
-	for (const tweet of data) {
+	for (const tweet of tweets) {
 		const article = document.createElement('article');
 
 		const link = document.createElement('a');
@@ -18,8 +18,8 @@
 			div.classList.add('multi');
 		for (const media_id of tweet['images']) {
 			const img = document.createElement('img');
-			img.src = `img/${media_id}.webp`;
 			img.loading = 'lazy';
+			img.src = `img/${media_id}.webp`;
 			div.append(img);
 		}
 		article.append(div);
